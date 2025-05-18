@@ -8,13 +8,8 @@ import {
 } from "@clerk/nextjs";
 import SettingsDropdown from "./settings-dropdown";
 import IntegrationsDropdown from "./integrations-dropdown";
-import { MultiAvatar } from "./ui/multi-avatar";
-const avatars = [
-  {
-    src: "https://github.com/shadcn.png",
-    alt: "shadcn",
-  },
-];
+import MembersDialog from "@/app/(main)/(members)/components/forms/dialog";
+
 const Navbar = () => {
   return (
     <nav className="flex justify-between items-center p-4 w-full border-b border-b-[#333333] ">
@@ -22,8 +17,8 @@ const Navbar = () => {
         {/* // Worskpace Dropdown */}
         <OrganizationSwitcher />
 
-        {/* // Members Dropdown */}
-        <MultiAvatar avatars={avatars} />
+        {/* // Members Dialog */}
+        <MembersDialog />
       </div>
 
       <div className="flex items-center gap-4">
