@@ -3,6 +3,9 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { dark } from "@clerk/themes";
+import MultisessionAppSupport from "@/app/contexts/multisession-support";
+import QueryProvider from "@/app/contexts/query-provider";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -24,24 +27,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider
-      appearance={{
-        baseTheme: dark,
-        variables: {
-          colorBackground: "#1a1a1a",
-          colorText: "#e6e6e6",
-        },
-      }}
-    >
-      <html lang="en">
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen flex flex-col`}
-        >
-
-            {children}
-    
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang="en">
+      <ClerkProvider
+        afterMultiSessionSingleSignOutUrl="/"
+        appearance={{
+          baseTheme: dark,
+          variables: {
+            colorBackground: "#1a1a1a",
+            colorText: "#e6e6e6",
+          },
+        }}
+      >
+        <MultisessionAppSupport>
+          <QueryProvider>
+            <body
+              className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen flex flex-col`}
+            >
+              {children}
+            </body>
+          </QueryProvider>
+        </MultisessionAppSupport>
+      </ClerkProvider>
+    </html>
   );
 }
