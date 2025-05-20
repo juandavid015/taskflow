@@ -1,11 +1,11 @@
 
-# Taskflow
-Plataforma que permite un flujo fluido para creación de documentos. La idea es que puedas conectar múltiples cuentas bajo un mismo espacio de trabajo.
+Platform that allows a smooth flow for document creation. The idea is that you can connect multiple accounts under one workspace.
 
-Se implementa Clerk para: 
+Clerk is implemented to: 
 
-- Manejo de  cuentas, roles y permisos
-- Permite conectar múltiples sesiones en el espacio
+- Management of accounts, roles and permissions
+- Allows connecting multiple sessions in the space
+  
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
