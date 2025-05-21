@@ -123,7 +123,7 @@ export function FileUpload({
         </div>
       ) : (
         <label
-          className={`flex items-center justify-center border-2 border-dashed border-white/10 rounded-sm cursor-pointer hover:border-white/20 transition-colors ${
+          className={`h-full w-full flex items-center justify-center border-2 border-dashed border-white/10 rounded-sm cursor-pointer hover:border-white/20 transition-colors ${
             isUploading ? "opacity-50" : ""
           }`}
         >

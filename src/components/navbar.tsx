@@ -6,8 +6,8 @@ import {
   SignedOut,
   UserButton,
 } from "@clerk/nextjs";
-import SettingsDropdown from "./settings-dropdown";
-import IntegrationsDropdown from "./integrations-dropdown";
+// import SettingsDropdown from "./settings-dropdown";
+// import IntegrationsDropdown from "./integrations-dropdown";
 import MembersDialog from "@/app/(main)/(members)/components/forms/dialog";
 
 const Navbar = () => {
@@ -25,8 +25,8 @@ const Navbar = () => {
         {/* // Integrations */}
 
         {/* // Settings */}
-        <IntegrationsDropdown />
-        <SettingsDropdown />
+        {/* <IntegrationsDropdown />
+        <SettingsDropdown /> */}
         <SignedOut>
           <SignInButton />
           <SignUpButton />

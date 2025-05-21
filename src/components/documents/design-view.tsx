@@ -91,7 +91,7 @@ export function DesignDocumentView({ document }: DesignDocumentViewProps) {
         />
       </TabsContent>
       <TabsContent value="preview" className="flex gap-16 w-full h-full">
-        <div className="p-8 flex flex-col gap-6 w-full h-full">
+        <div className="flex flex-col gap-6 w-full h-full">
           <DocumentHeader
             title={title}
             coverImage={coverImage}

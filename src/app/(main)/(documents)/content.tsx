@@ -142,8 +142,18 @@ function Content({ documents, documentTypes }: ContentProps) {
             <DocumentList
               documents={docs}
               onSelect={handleSelectDocument}
-              documentTypes={documentTypes}
               onDelete={handleDeleteDocument}
+              documentTypes={documentTypes}
+              onCreate={(newDoc) => {
+                const newTab = {
+                  id: newDoc.id,
+                  name: newDoc.title || "Untitled",
+                  document: newDoc,
+                };
+                setTabs((prev) => [...prev, newTab]);
+                setActiveTab(newTab.id);
+                setDocs((prev) => [...prev, newDoc]);
+              }}
             />
           ) : (
             <Document document={tab.document} />

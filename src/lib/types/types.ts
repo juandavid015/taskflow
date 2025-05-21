@@ -22,13 +22,40 @@ export type DesignDocument = Omit<Document, 'content'> & {
 }
 
 export function isDefaultDocument(doc: Document): doc is DefaultDocument {
-  return typeof doc.content === 'string' || doc.content === null;
+  if (typeof doc.content === 'string') {
+    try {
+      // If it parses to an object with 'header' and 'content', it's not a default document
+      const parsed = JSON.parse(doc.content);
+      if (
+        typeof parsed === 'object' &&
+        parsed !== null &&
+        'header' in parsed &&
+        'content' in parsed
+      ) {
+        return false;
+      }
+    } catch {
+      // Not JSON, so it's a default document
+      return true;
+    }
+    // If it's a string but not valid DesignDocument JSON, it's a default document
+    return true;
+  }
+  return doc.content === null;
 }
 
 export function isDesignDocument(doc: Document): doc is DesignDocument {
-  return doc.content !== null &&
-         typeof doc.content === 'object' && 
-         'header' in doc.content && 
-         'content' in doc.content;
+  if (doc.content === null) return false;
+  
+  let parsedContent;
+  try {
+    parsedContent = typeof doc.content === 'string' ? JSON.parse(doc.content) : doc.content;
+  } catch {
+    return false;
+  }
+
+  return typeof parsedContent === 'object' && 
+         'header' in parsedContent && 
+         'content' in parsedContent;
 }
 
